@@ -1,0 +1,19 @@
+body{
+    background-color: #fff;
+}
+footer{
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+    bottom: 0;
+    background-color: #101010;
+}
+.game_logo{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+.titulos{
+    font-weight: 200;
+}
