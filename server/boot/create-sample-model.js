@@ -8,7 +8,8 @@ module.exports = function(app) {
   // create all models
   async.parallel({
     reviewers: async.apply(createReviewers),
-    coffeeShops: async.apply(createCoffeeShops)
+    coffeeShops: async.apply(createCoffeeShops),
+    registros: async.apply(createRegistros)
   }, function(err, results) {
     if (err) throw err;
 
@@ -18,6 +19,16 @@ module.exports = function(app) {
     });
   });
 
+
+  function createRegistros(cb){
+     mongoDs.automigrate('registros', function(err) {
+      if (err) return cb(err);
+
+      app.models.Registros.create([
+        {nick_name: 'diego', score: 100,state:0}
+      ], cb);
+    });
+  }
   // create reviewers
   function createReviewers(cb) {
     mongoDs.automigrate('Reviewer', function(err) {

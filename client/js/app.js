@@ -1,7 +1,8 @@
 angular
   .module('app', [
     'ui.router',
-    'lbServices'
+    'lbServices',
+    'ui.bootstrap'
   ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
@@ -10,11 +11,27 @@ angular
         url: '/home',
         templateUrl: 'index.html'
       })
+    .state('aula', {
+        url: '/aula',
+        templateUrl: 'views/aula.html',
+        controller: 'AulaController'
+      })
+    .state('salon', {
+        url: '/salon',
+        templateUrl: 'views/salon.html',
+        controller: 'SalonController',
+        authenticate: true
+      })
+    .state('tienda', {
+        url: '/salon',
+        templateUrl: 'views/tienda.html',
+        controller: 'TiendaController'
+      })
       .state('add-review', {
         url: '/add-review',
         templateUrl: 'views/review-form.html',
         controller: 'AddReviewController',
-        authenticate: true
+        authenticate: false
       })
       .state('all-reviews', {
         url: '/all-reviews',
@@ -54,20 +71,20 @@ angular
       .state('sign-up', {
         url: '/sign-up',
         templateUrl: 'views/sign-up-form.html',
-        controller: 'SignUpController',
+        controller: 'AuthLoginController',
       })
       .state('sign-up-success', {
         url: '/sign-up/success',
         templateUrl: 'views/sign-up-success.html'
       });
-    $urlRouterProvider.otherwise('login');
+    $urlRouterProvider.otherwise('salon');
   }])
   .run(['$rootScope', '$state', function($rootScope, $state) {
     $rootScope.$on('$stateChangeStart', function(event, next) {
       // redirect to login page if not logged in
       if (next.authenticate && !$rootScope.currentUser) {
         event.preventDefault(); //prevent current page from loading
-        $state.go('forbidden');
+        $state.go('login');
       }
     });
   }]);

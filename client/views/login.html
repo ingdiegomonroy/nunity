@@ -1,5 +1,4 @@
-<!--
-<section>
+<!--<section>
   <form name="form" ng-submit="register()">
     <fieldset>
       <legend>Login form</legend>
@@ -26,7 +25,7 @@
   </form>
 <section>
 -->
-<nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -46,12 +45,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a ui-sref="login" ui-sref-active="active" >Inicio de sesion</a></li>
-        <li><a ui-sref="sign-up" ui-sref-active="active">Registro</a></li>
+        <li><a ui-sref="sign-up" ui-sref-active="inactive">Registro</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
 <div class="container">
 <div class="row">
   <h3 class="text-center titulos">Aprende a crear juegos en el motor Unity3D</h3>
@@ -64,14 +62,14 @@
   </div>
   <div class="col-xs-6 col-md-6">
      <h4 class="text-center">Ingreso</h4>
-     <form>
+     <form ng-submit="login()">
   <div class="form-group">
     <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="user.email">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="user.password">
   </div>
   <button type="submit" class="btn btn-success">Ingresar</button>
 </form>

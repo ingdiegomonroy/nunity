@@ -8,7 +8,7 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mongoDs"
   },
   "AccessToken": {
     "dataSource": "db",
@@ -37,5 +37,11 @@
   "Reviewer": {
     "dataSource": "mongoDs",
     "public": true
+  },
+  "registros": {
+    "dataSource": "mongoDs",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   }
 }

@@ -1,7 +1,8 @@
 angular
   .module('app')
-  .controller('AllReviewsController', ['$scope', 'Review', function($scope,
-      Review) {
+  .controller('AllReviewsController', ['$scope', 'Review','$rootScope', function($scope,
+      Review,$rootScope) {
+
     $scope.reviews = Review.find({
       filter: {
         include: [
@@ -12,13 +13,13 @@ angular
     });
   }])
   .controller('AddReviewController', ['$scope', 'CoffeeShop', 'Review',
-      '$state', function($scope, CoffeeShop, Review, $state) {
+      '$state', '$rootScope',function($scope, CoffeeShop, Review, $state,$rootScope) {
     $scope.action = 'Add';
     $scope.coffeeShops = [];
     $scope.selectedShop;
     $scope.review = {};
     $scope.isDisabled = false;
-
+     console.log($rootScope)
     CoffeeShop
       .find()
       .$promise
@@ -87,6 +88,7 @@ angular
   }])
   .controller('MyReviewsController', ['$scope', 'Review', '$rootScope',
       function($scope, Review, $rootScope) {
+         console.log($rootScope)
     $scope.reviews = Review.find({
       filter: {
         where: {

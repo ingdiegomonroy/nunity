@@ -1,3 +1,26 @@
+ <nav>
+        <ul>
+          <li>
+            <a ui-sref="all-reviews" ui-sref-active="active">All reviews</a>
+          </li>
+          <li ng-hide="currentUser">
+            <a ui-sref="sign-up" ui-sref-active="active">Sign up</a>
+          </li>
+          <li ng-show="currentUser">
+            <a ui-sref="my-reviews" ui-sref-active="active">My Reviews</a>
+          </li>
+          <li ng-show="currentUser">
+            <a ui-sref="add-review" ui-sref-active="active">Add Review</a>
+          </li>
+          <li ng-hide="currentUser">
+            <a ui-sref="login" ui-sref-active="active">Log in</a>
+          </li>
+          <li ng-show="currentUser">
+            <a ui-sref="logout" ui-sref-active="active">Log out</a>
+          </li>
+        </ul>
+      </nav>	
+
 <section>
   <article ng-repeat="r in reviews.slice().reverse()">
     <header>

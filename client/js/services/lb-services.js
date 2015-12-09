@@ -47,7 +47,7 @@ module.factory(
          *
          * @description
          *
-         * Find a related item by id for accessTokens
+         * Find a related item by id for accessTokens.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -71,6 +71,9 @@ module.factory(
          * </em>
          */
         "prototype$__findById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Users/:id/accessTokens/:fk",
           method: "GET"
         },
@@ -82,7 +85,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a related item by id for accessTokens
+         * Delete a related item by id for accessTokens.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -103,6 +106,9 @@ module.factory(
          * This method returns no data.
          */
         "prototype$__destroyById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Users/:id/accessTokens/:fk",
           method: "DELETE"
         },
@@ -114,7 +120,7 @@ module.factory(
          *
          * @description
          *
-         * Update a related item by id for accessTokens
+         * Update a related item by id for accessTokens.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -142,6 +148,9 @@ module.factory(
          * </em>
          */
         "prototype$__updateById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Users/:id/accessTokens/:fk",
           method: "PUT"
         },
@@ -290,7 +299,7 @@ module.factory(
          *
          * @description
          *
-         * Create a new instance of the model and persist it into the data source
+         * Create a new instance of the model and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -323,12 +332,51 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.User#createMany
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/Users",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.User#upsert
          * @methodOf lbServices.User
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -366,7 +414,7 @@ module.factory(
          *
          * @description
          *
-         * Check whether a model instance exists in the data source
+         * Check whether a model instance exists in the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -398,11 +446,13 @@ module.factory(
          *
          * @description
          *
-         * Find a model instance by id from the data source
+         * Find a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -431,11 +481,11 @@ module.factory(
          *
          * @description
          *
-         * Find all instances of the model matched by filter from the data source
+         * Find all instances of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -465,11 +515,11 @@ module.factory(
          *
          * @description
          *
-         * Find first instance of the model matched by filter from the data source
+         * Find first instance of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -498,7 +548,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -518,7 +568,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/Users/update",
@@ -532,7 +582,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -548,7 +598,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/Users/:id",
@@ -562,7 +615,7 @@ module.factory(
          *
          * @description
          *
-         * Count instances of the model matched by where from the data source
+         * Count instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -594,7 +647,7 @@ module.factory(
          *
          * @description
          *
-         * Update attributes for a model instance and persist it into the data source
+         * Update attributes for a model instance and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -626,12 +679,49 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.User#createChangeStream
+         * @methodOf lbServices.User
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/Users/change-stream",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.User#login
          * @methodOf lbServices.User
          *
          * @description
          *
-         * Login a user with username/email and password
+         * Login a user with username/email and password.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -687,7 +777,7 @@ module.factory(
          *
          * @description
          *
-         * Logout a user with access token
+         * Logout a user with access token.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -729,7 +819,7 @@ module.factory(
          *
          * @description
          *
-         * Confirm a user registration with email verification token
+         * Confirm a user registration with email verification token.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -737,7 +827,7 @@ module.factory(
          *
          *  - `token` – `{string}` - 
          *
-         *  - `redirect` – `{string}` - 
+         *  - `redirect` – `{string=}` - 
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -763,7 +853,7 @@ module.factory(
          *
          * @description
          *
-         * Reset password for a user with email
+         * Reset password for a user with email.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -841,7 +931,7 @@ module.factory(
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -876,7 +966,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -896,7 +986,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
@@ -907,7 +997,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -923,7 +1013,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
@@ -934,7 +1027,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -950,7 +1043,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `User` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
@@ -1037,36 +1133,54 @@ module.factory(
 
         // INTERNAL. Use CoffeeShop.reviews.findById() instead.
         "prototype$__findById__reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviews/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use CoffeeShop.reviews.destroyById() instead.
         "prototype$__destroyById__reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviews/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use CoffeeShop.reviews.updateById() instead.
         "prototype$__updateById__reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviews/:fk",
           method: "PUT"
         },
 
         // INTERNAL. Use CoffeeShop.reviewers.findById() instead.
         "prototype$__findById__reviewers": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviewers/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use CoffeeShop.reviewers.destroyById() instead.
         "prototype$__destroyById__reviewers": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviewers/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use CoffeeShop.reviewers.updateById() instead.
         "prototype$__updateById__reviewers": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviewers/:fk",
           method: "PUT"
         },
@@ -1128,7 +1242,7 @@ module.factory(
          *
          * @description
          *
-         * Create a new instance of the model and persist it into the data source
+         * Create a new instance of the model and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1161,12 +1275,51 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.CoffeeShop#createMany
+         * @methodOf lbServices.CoffeeShop
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CoffeeShop` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/CoffeeShops",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.CoffeeShop#upsert
          * @methodOf lbServices.CoffeeShop
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1204,7 +1357,7 @@ module.factory(
          *
          * @description
          *
-         * Check whether a model instance exists in the data source
+         * Check whether a model instance exists in the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1236,11 +1389,13 @@ module.factory(
          *
          * @description
          *
-         * Find a model instance by id from the data source
+         * Find a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1269,11 +1424,11 @@ module.factory(
          *
          * @description
          *
-         * Find all instances of the model matched by filter from the data source
+         * Find all instances of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1303,11 +1458,11 @@ module.factory(
          *
          * @description
          *
-         * Find first instance of the model matched by filter from the data source
+         * Find first instance of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -1336,7 +1491,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1356,7 +1511,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/CoffeeShops/update",
@@ -1370,7 +1525,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1386,7 +1541,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CoffeeShop` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/CoffeeShops/:id",
@@ -1400,7 +1558,7 @@ module.factory(
          *
          * @description
          *
-         * Count instances of the model matched by where from the data source
+         * Count instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1432,7 +1590,7 @@ module.factory(
          *
          * @description
          *
-         * Update attributes for a model instance and persist it into the data source
+         * Update attributes for a model instance and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1460,6 +1618,43 @@ module.factory(
         "prototype$updateAttributes": {
           url: urlBase + "/CoffeeShops/:id",
           method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.CoffeeShop#createChangeStream
+         * @methodOf lbServices.CoffeeShop
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/CoffeeShops/change-stream",
+          method: "POST"
         },
 
         /**
@@ -1514,7 +1709,7 @@ module.factory(
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1549,7 +1744,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1569,7 +1764,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
@@ -1580,7 +1775,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1596,7 +1791,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CoffeeShop` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
@@ -1607,7 +1805,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1623,7 +1821,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `CoffeeShop` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
@@ -1764,6 +1965,44 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.CoffeeShop.reviews#createMany
+         * @methodOf lbServices.CoffeeShop.reviews
+         *
+         * @description
+         *
+         * Creates a new instance in reviews of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Review` object.)
+         * </em>
+         */
+        R.reviews.createMany = function() {
+          var TargetResource = $injector.get("Review");
+          var action = TargetResource["::createMany::CoffeeShop::reviews"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
          * @name lbServices.CoffeeShop.reviews#destroyAll
          * @methodOf lbServices.CoffeeShop.reviews
          *
@@ -1800,7 +2039,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a related item by id for reviews
+         * Delete a related item by id for reviews.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1833,7 +2072,7 @@ module.factory(
          *
          * @description
          *
-         * Find a related item by id for reviews
+         * Find a related item by id for reviews.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1869,7 +2108,7 @@ module.factory(
          *
          * @description
          *
-         * Update a related item by id for reviews
+         * Update a related item by id for reviews.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2027,6 +2266,44 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.CoffeeShop.reviewers#createMany
+         * @methodOf lbServices.CoffeeShop.reviewers
+         *
+         * @description
+         *
+         * Creates a new instance in reviewers of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Reviewer` object.)
+         * </em>
+         */
+        R.reviewers.createMany = function() {
+          var TargetResource = $injector.get("Reviewer");
+          var action = TargetResource["::createMany::CoffeeShop::reviewers"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
          * @name lbServices.CoffeeShop.reviewers#destroyAll
          * @methodOf lbServices.CoffeeShop.reviewers
          *
@@ -2063,7 +2340,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a related item by id for reviewers
+         * Delete a related item by id for reviewers.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2096,7 +2373,7 @@ module.factory(
          *
          * @description
          *
-         * Find a related item by id for reviewers
+         * Find a related item by id for reviewers.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2132,7 +2409,7 @@ module.factory(
          *
          * @description
          *
-         * Update a related item by id for reviewers
+         * Update a related item by id for reviewers.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2212,7 +2489,7 @@ module.factory(
          *
          * @description
          *
-         * Create a new instance of the model and persist it into the data source
+         * Create a new instance of the model and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2245,12 +2522,51 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Review#createMany
+         * @methodOf lbServices.Review
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Review` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/Reviews",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.Review#upsert
          * @methodOf lbServices.Review
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2288,7 +2604,7 @@ module.factory(
          *
          * @description
          *
-         * Check whether a model instance exists in the data source
+         * Check whether a model instance exists in the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2320,11 +2636,13 @@ module.factory(
          *
          * @description
          *
-         * Find a model instance by id from the data source
+         * Find a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2353,11 +2671,11 @@ module.factory(
          *
          * @description
          *
-         * Find all instances of the model matched by filter from the data source
+         * Find all instances of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2387,11 +2705,11 @@ module.factory(
          *
          * @description
          *
-         * Find first instance of the model matched by filter from the data source
+         * Find first instance of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2420,7 +2738,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2440,7 +2758,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/Reviews/update",
@@ -2454,7 +2772,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2470,7 +2788,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Review` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/Reviews/:id",
@@ -2484,7 +2805,7 @@ module.factory(
          *
          * @description
          *
-         * Count instances of the model matched by where from the data source
+         * Count instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2516,7 +2837,7 @@ module.factory(
          *
          * @description
          *
-         * Update attributes for a model instance and persist it into the data source
+         * Update attributes for a model instance and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2546,20 +2867,66 @@ module.factory(
           method: "PUT"
         },
 
+        /**
+         * @ngdoc method
+         * @name lbServices.Review#createChangeStream
+         * @methodOf lbServices.Review
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/Reviews/change-stream",
+          method: "POST"
+        },
+
         // INTERNAL. Use CoffeeShop.reviews.findById() instead.
         "::findById::CoffeeShop::reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviews/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use CoffeeShop.reviews.destroyById() instead.
         "::destroyById::CoffeeShop::reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviews/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use CoffeeShop.reviews.updateById() instead.
         "::updateById::CoffeeShop::reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviews/:fk",
           method: "PUT"
         },
@@ -2573,6 +2940,13 @@ module.factory(
 
         // INTERNAL. Use CoffeeShop.reviews.create() instead.
         "::create::CoffeeShop::reviews": {
+          url: urlBase + "/CoffeeShops/:id/reviews",
+          method: "POST"
+        },
+
+        // INTERNAL. Use CoffeeShop.reviews.createMany() instead.
+        "::createMany::CoffeeShop::reviews": {
+          isArray: true,
           url: urlBase + "/CoffeeShops/:id/reviews",
           method: "POST"
         },
@@ -2591,18 +2965,27 @@ module.factory(
 
         // INTERNAL. Use Reviewer.reviews.findById() instead.
         "::findById::Reviewer::reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/reviews/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use Reviewer.reviews.destroyById() instead.
         "::destroyById::Reviewer::reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/reviews/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use Reviewer.reviews.updateById() instead.
         "::updateById::Reviewer::reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/reviews/:fk",
           method: "PUT"
         },
@@ -2616,6 +2999,13 @@ module.factory(
 
         // INTERNAL. Use Reviewer.reviews.create() instead.
         "::create::Reviewer::reviews": {
+          url: urlBase + "/Reviewers/:id/reviews",
+          method: "POST"
+        },
+
+        // INTERNAL. Use Reviewer.reviews.createMany() instead.
+        "::createMany::Reviewer::reviews": {
+          isArray: true,
           url: urlBase + "/Reviewers/:id/reviews",
           method: "POST"
         },
@@ -2643,7 +3033,7 @@ module.factory(
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2678,7 +3068,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2698,7 +3088,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
@@ -2709,7 +3099,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2725,7 +3115,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Review` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
@@ -2736,7 +3129,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2752,7 +3145,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Review` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
@@ -2775,7 +3171,7 @@ module.factory(
          *
          * @description
          *
-         * Fetches belongsTo relation coffeeShop
+         * Fetches belongsTo relation coffeeShop.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2811,7 +3207,7 @@ module.factory(
          *
          * @description
          *
-         * Fetches belongsTo relation reviewer
+         * Fetches belongsTo relation reviewer.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2875,7 +3271,7 @@ module.factory(
          *
          * @description
          *
-         * Find a related item by id for accessTokens
+         * Find a related item by id for accessTokens.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2899,6 +3295,9 @@ module.factory(
          * </em>
          */
         "prototype$__findById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/accessTokens/:fk",
           method: "GET"
         },
@@ -2910,7 +3309,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a related item by id for accessTokens
+         * Delete a related item by id for accessTokens.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2931,6 +3330,9 @@ module.factory(
          * This method returns no data.
          */
         "prototype$__destroyById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/accessTokens/:fk",
           method: "DELETE"
         },
@@ -2942,7 +3344,7 @@ module.factory(
          *
          * @description
          *
-         * Update a related item by id for accessTokens
+         * Update a related item by id for accessTokens.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2970,24 +3372,36 @@ module.factory(
          * </em>
          */
         "prototype$__updateById__accessTokens": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/accessTokens/:fk",
           method: "PUT"
         },
 
         // INTERNAL. Use Reviewer.reviews.findById() instead.
         "prototype$__findById__reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/reviews/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use Reviewer.reviews.destroyById() instead.
         "prototype$__destroyById__reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/reviews/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use Reviewer.reviews.updateById() instead.
         "prototype$__updateById__reviews": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/Reviewers/:id/reviews/:fk",
           method: "PUT"
         },
@@ -3161,7 +3575,7 @@ module.factory(
          *
          * @description
          *
-         * Create a new instance of the model and persist it into the data source
+         * Create a new instance of the model and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3194,12 +3608,51 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Reviewer#createMany
+         * @methodOf lbServices.Reviewer
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Reviewer` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/Reviewers",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.Reviewer#upsert
          * @methodOf lbServices.Reviewer
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3237,7 +3690,7 @@ module.factory(
          *
          * @description
          *
-         * Check whether a model instance exists in the data source
+         * Check whether a model instance exists in the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3269,11 +3722,13 @@ module.factory(
          *
          * @description
          *
-         * Find a model instance by id from the data source
+         * Find a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3302,11 +3757,11 @@ module.factory(
          *
          * @description
          *
-         * Find all instances of the model matched by filter from the data source
+         * Find all instances of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Array.<Object>,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3336,11 +3791,11 @@ module.factory(
          *
          * @description
          *
-         * Find first instance of the model matched by filter from the data source
+         * Find first instance of the model matched by filter from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
-         *  - `filter` – `{object=}` - Filter defining fields, where, orderBy, offset, and limit
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3369,7 +3824,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3389,7 +3844,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         "updateAll": {
           url: urlBase + "/Reviewers/update",
@@ -3403,7 +3858,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3419,7 +3874,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Reviewer` object.)
+         * </em>
          */
         "deleteById": {
           url: urlBase + "/Reviewers/:id",
@@ -3433,7 +3891,7 @@ module.factory(
          *
          * @description
          *
-         * Count instances of the model matched by where from the data source
+         * Count instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3465,7 +3923,7 @@ module.factory(
          *
          * @description
          *
-         * Update attributes for a model instance and persist it into the data source
+         * Update attributes for a model instance and persist it into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3497,12 +3955,49 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Reviewer#createChangeStream
+         * @methodOf lbServices.Reviewer
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/Reviewers/change-stream",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
          * @name lbServices.Reviewer#login
          * @methodOf lbServices.Reviewer
          *
          * @description
          *
-         * Login a user with username/email and password
+         * Login a user with username/email and password.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3558,7 +4053,7 @@ module.factory(
          *
          * @description
          *
-         * Logout a user with access token
+         * Logout a user with access token.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3600,7 +4095,7 @@ module.factory(
          *
          * @description
          *
-         * Confirm a user registration with email verification token
+         * Confirm a user registration with email verification token.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3608,7 +4103,7 @@ module.factory(
          *
          *  - `token` – `{string}` - 
          *
-         *  - `redirect` – `{string}` - 
+         *  - `redirect` – `{string=}` - 
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -3634,7 +4129,7 @@ module.factory(
          *
          * @description
          *
-         * Reset password for a user with email
+         * Reset password for a user with email.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3664,18 +4159,27 @@ module.factory(
 
         // INTERNAL. Use CoffeeShop.reviewers.findById() instead.
         "::findById::CoffeeShop::reviewers": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviewers/:fk",
           method: "GET"
         },
 
         // INTERNAL. Use CoffeeShop.reviewers.destroyById() instead.
         "::destroyById::CoffeeShop::reviewers": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviewers/:fk",
           method: "DELETE"
         },
 
         // INTERNAL. Use CoffeeShop.reviewers.updateById() instead.
         "::updateById::CoffeeShop::reviewers": {
+          params: {
+          'fk': '@fk'
+          },
           url: urlBase + "/CoffeeShops/:id/reviewers/:fk",
           method: "PUT"
         },
@@ -3689,6 +4193,13 @@ module.factory(
 
         // INTERNAL. Use CoffeeShop.reviewers.create() instead.
         "::create::CoffeeShop::reviewers": {
+          url: urlBase + "/CoffeeShops/:id/reviewers",
+          method: "POST"
+        },
+
+        // INTERNAL. Use CoffeeShop.reviewers.createMany() instead.
+        "::createMany::CoffeeShop::reviewers": {
+          isArray: true,
           url: urlBase + "/CoffeeShops/:id/reviewers",
           method: "POST"
         },
@@ -3761,7 +4272,7 @@ module.factory(
          *
          * @description
          *
-         * Update an existing model instance or insert a new one into the data source
+         * Update an existing model instance or insert a new one into the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3796,7 +4307,7 @@ module.factory(
          *
          * @description
          *
-         * Update instances of the model matched by where from the data source
+         * Update instances of the model matched by where from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3816,7 +4327,7 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * The number of instances updated
          */
         R["update"] = R["updateAll"];
 
@@ -3827,7 +4338,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3843,7 +4354,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Reviewer` object.)
+         * </em>
          */
         R["destroyById"] = R["deleteById"];
 
@@ -3854,7 +4368,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a model instance by id from the data source
+         * Delete a model instance by id from the data source.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3870,7 +4384,10 @@ module.factory(
          *   populated with the actual data once the response is returned
          *   from the server.
          *
-         * This method returns no data.
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Reviewer` object.)
+         * </em>
          */
         R["removeById"] = R["deleteById"];
 
@@ -4052,6 +4569,44 @@ module.factory(
 
         /**
          * @ngdoc method
+         * @name lbServices.Reviewer.reviews#createMany
+         * @methodOf lbServices.Reviewer.reviews
+         *
+         * @description
+         *
+         * Creates a new instance in reviews of this model.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - User id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Review` object.)
+         * </em>
+         */
+        R.reviews.createMany = function() {
+          var TargetResource = $injector.get("Review");
+          var action = TargetResource["::createMany::Reviewer::reviews"];
+          return action.apply(R, arguments);
+        };
+
+        /**
+         * @ngdoc method
          * @name lbServices.Reviewer.reviews#destroyAll
          * @methodOf lbServices.Reviewer.reviews
          *
@@ -4088,7 +4643,7 @@ module.factory(
          *
          * @description
          *
-         * Delete a related item by id for reviews
+         * Delete a related item by id for reviews.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4121,7 +4676,7 @@ module.factory(
          *
          * @description
          *
-         * Find a related item by id for reviews
+         * Find a related item by id for reviews.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4157,7 +4712,7 @@ module.factory(
          *
          * @description
          *
-         * Update a related item by id for reviews
+         * Update a related item by id for reviews.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4189,6 +4744,598 @@ module.factory(
           var action = TargetResource["::updateById::Reviewer::reviews"];
           return action.apply(R, arguments);
         };
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name lbServices.Registros
+ * @header lbServices.Registros
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Registros` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "Registros",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/return/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#create
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "create": {
+          url: urlBase + "/return",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#createMany
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Create a new instance of the model and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "createMany": {
+          isArray: true,
+          url: urlBase + "/return",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#upsert
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "upsert": {
+          url: urlBase + "/return",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#exists
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Check whether a model instance exists in the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `exists` – `{boolean=}` - 
+         */
+        "exists": {
+          url: urlBase + "/return/:id/exists",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#findById
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Find a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         *  - `filter` – `{object=}` - Filter defining fields and include
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "findById": {
+          url: urlBase + "/return/:id",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#find
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Find all instances of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Array.<Object>,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Array.<Object>} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "find": {
+          isArray: true,
+          url: urlBase + "/return",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#findOne
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Find first instance of the model matched by filter from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "findOne": {
+          url: urlBase + "/return/findOne",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#updateAll
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * The number of instances updated
+         */
+        "updateAll": {
+          url: urlBase + "/return/update",
+          method: "POST"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#deleteById
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "deleteById": {
+          url: urlBase + "/return/:id",
+          method: "DELETE"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#count
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Count instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `count` – `{number=}` - 
+         */
+        "count": {
+          url: urlBase + "/return/count",
+          method: "GET"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#prototype$updateAttributes
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Update attributes for a model instance and persist it into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - PersistedModel id
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        "prototype$updateAttributes": {
+          url: urlBase + "/return/:id",
+          method: "PUT"
+        },
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#createChangeStream
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Create a change stream.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `options` – `{object=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `changes` – `{ReadableStream=}` - 
+         */
+        "createChangeStream": {
+          url: urlBase + "/return/change-stream",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#updateOrCreate
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Update an existing model instance or insert a new one into the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        R["updateOrCreate"] = R["upsert"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#update
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Update instances of the model matched by where from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `where` – `{object=}` - Criteria to match model instances
+         *
+         * @param {Object} postData Request data.
+         *
+         * This method expects a subset of model properties as request parameters.
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * The number of instances updated
+         */
+        R["update"] = R["updateAll"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#destroyById
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        R["destroyById"] = R["deleteById"];
+
+        /**
+         * @ngdoc method
+         * @name lbServices.Registros#removeById
+         * @methodOf lbServices.Registros
+         *
+         * @description
+         *
+         * Delete a model instance by id from the data source.
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *  - `id` – `{*}` - Model id
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * <em>
+         * (The remote method definition does not provide any description.
+         * This usually means the response is a `Registros` object.)
+         * </em>
+         */
+        R["removeById"] = R["deleteById"];
+
+
+    /**
+    * @ngdoc property
+    * @name lbServices.Registros#modelName
+    * @propertyOf lbServices.Registros
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `Registros`.
+    */
+    R.modelName = "Registros";
+
 
     return R;
   }]);
@@ -4327,6 +5474,18 @@ module
      */
     this.setUrlBase = function(url) {
       urlBase = url;
+    };
+
+    /**
+     * @ngdoc method
+     * @name lbServices.LoopBackResourceProvider#getUrlBase
+     * @methodOf lbServices.LoopBackResourceProvider
+     * @description
+     * Get the URL of the REST API server. The URL provided
+     * to the code generator (`lb-ng` or `grunt-loopback-sdk-angular`) is used.
+     */
+    this.getUrlBase = function() {
+      return urlBase;
     };
 
     this.$get = ['$resource', function($resource) {
